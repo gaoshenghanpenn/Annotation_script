@@ -1,9 +1,22 @@
 import os
 import numpy as np
 
+import argparse
+
 def main():
-    workdir = '/project/logsdon_shared/projects/HGSVC3/HGSVC_centromere_annotation/Moddotplot'
-    outfile = '/project/logsdon_shared/projects/HGSVC3/HGSVC_centromere_annotation/1DModplot.bed'
+    parser = argparse.ArgumentParser(description="Annotation sequence identity for centromeres")
+    parser.add_argument(
+        "-i", "--input_bed_dir", help="A directory contains all moddotplot files", required=True
+    )
+    
+    parser.add_argument(
+        "-o", "--output_file", help="outfile bed file name", required=True
+    )
+    
+    args = parser.parse_args()
+
+    workdir = args.input_bed_path
+    outfile = args.output_file
 
     
     files = os.listdir(workdir)
